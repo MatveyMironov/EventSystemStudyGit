@@ -1,23 +1,31 @@
-﻿using System;
+﻿using ResourcesSystem;
+using System;
 using System.Collections.Generic;
+using UISystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UISystem
+namespace Core
 {
-    public class UIStateMachineController : MonoBehaviour
+    public class Bootstrapper : MonoBehaviour
     {
         [SerializeField] private List<PanelAndButton> panelsAndButtons = new();
+        [SerializeField] private MainMenu mainMenu;
 
         private void Start()
         {
-            UIStateMachine uIStateMachine = new();
+            UISwitcher uISwitcher = new();
 
             foreach (PanelAndButton panelAndButton in panelsAndButtons)
             {
                 UIState uIState = new(panelAndButton.Panel);
-                panelAndButton.Button.onClick.AddListener(() => uIStateMachine.SetUIState(uIState));
+                panelAndButton.Button.onClick.AddListener(() => uISwitcher.SwitchUI(uIState));
             }
+
+            ResourcesStorage storage = new();
+
+            MainMenuController mainMenuController = new(mainMenu);
+            mainMenuController.DisplayResources();
         }
 
         [Serializable]
