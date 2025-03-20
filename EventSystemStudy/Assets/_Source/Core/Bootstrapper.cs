@@ -37,6 +37,8 @@ namespace Core
 
             ResourceCountChangeMenuController removeMenuController = new(removeMenu);
             removeMenuController.OnResourceCountChangeRequested += (Resource resource, int count) => resourcePool.TryRemoveResource(resource, count);
+
+            mainMenu.ResetButton.onClick.AddListener(resourcePool.Reset);
         }
 
         [Serializable]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ResourcesSystem
 {
@@ -43,6 +44,15 @@ namespace ResourcesSystem
         public bool TryGetResourceCount(Resource resource, out int count)
         {
             return _resources.TryGetValue(resource, out count);
+        }
+
+        public void Reset()
+        {
+            foreach (Resource resource in _resources.Keys.ToArray())
+            {
+                _resources[resource] = 0;
+                OnResourceCountChanged?.Invoke(resource);
+            }
         }
     }
 }

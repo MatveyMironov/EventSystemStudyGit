@@ -38,7 +38,14 @@ namespace UISystem
         {
             if (_dropdownResourceOptions.TryGetValue(_resourceCountChangeMenu.Dropdown.value, out Resource resource))
             {
-                OnResourceCountChangeRequested?.Invoke(resource, int.Parse(_resourceCountChangeMenu.InputField.text));
+                int count = int.Parse(_resourceCountChangeMenu.InputField.text);
+
+                if (count > 0)
+                {
+                    OnResourceCountChangeRequested?.Invoke(resource, count);
+
+                    _resourceCountChangeMenu.InputField.text = "";
+                }
             }
         }
     }
