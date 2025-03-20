@@ -1,6 +1,6 @@
 namespace ResourcesSystem
 {
-    public enum Resources
+    public enum Resource
     {
         helium,
         iridium,

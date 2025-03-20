@@ -8,41 +8,33 @@ namespace UISystem
     {
         private readonly MainMenu _mainMenu;
 
-        private readonly Dictionary<Resources, ResourceItemController> resourceItemControllers = new();
-
-        private ResourcesStorage _storage;
+        private readonly Dictionary<Resource, ResourceItemController> _resourceItemControllers = new();
 
         public MainMenuController(MainMenu mainMenu)
         {
             _mainMenu = mainMenu != null ? mainMenu : throw new ArgumentNullException(nameof(mainMenu));
         }
 
-        public void DisplayResources(ResourcesStorage storage)
+        public void DisplayResources()
         {
-            var resources = Enum.GetValues(typeof(Resources));
-
-            foreach (var resource in resources)
+            foreach (var resource in Enum.GetValues(typeof(Resource)))
             {
                 ResourceItemController resourceItemController = _mainMenu.ResourceItemCreator.CreateResourceItem();
                 resourceItemController.DisplayResourceName(resource.ToString());
                 resourceItemController.DisplayResourceCount(0);
-                resourceItemControllers.Add(resource, resourceItemController);
-            }
 
-            storage.OnResourceCountChanged += DisplayResourceCount;
+                if (resource is Resource definetlyAResource)
+                {
+                    _resourceItemControllers.TryAdd(definetlyAResource, resourceItemController);
+                }
+            }
         }
 
-        private void DisplayResourceCount(Resources resource)
+        public void DisplayResourceCount(Resource resource, int count)
         {
-            if (_storage == null)
-                return;
-
-            if (_storage.TryGetResource(resource, out int count))
+            if (_resourceItemControllers.TryGetValue(resource, out ResourceItemController resourceItemController))
             {
-                if (resourceItemControllers.TryGetValue(resource, out ResourceItemController resourceItemController))
-                {
-                    resourceItemController.DisplayResourceCount(count);
-                }
+                resourceItemController.DisplayResourceCount(count);
             }
         }
     }

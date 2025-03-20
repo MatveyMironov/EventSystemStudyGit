@@ -11,6 +11,8 @@ namespace Core
     {
         [SerializeField] private List<PanelAndButton> panelsAndButtons = new();
         [SerializeField] private MainMenu mainMenu;
+        [SerializeField] private ResourceCountChangeMenu addMenu;
+        [SerializeField] private ResourceCountChangeMenu removeMenu;
 
         private void Start()
         {
@@ -22,10 +24,19 @@ namespace Core
                 panelAndButton.Button.onClick.AddListener(() => uISwitcher.SwitchUI(uIState));
             }
 
-            ResourcesStorage storage = new();
+            ResourcePool resourcePool = new();
 
             MainMenuController mainMenuController = new(mainMenu);
             mainMenuController.DisplayResources();
+
+            ResourcePoolMainMenuConnector resourcePoolMainMenuConnector = new(mainMenuController);
+            resourcePoolMainMenuConnector.ConnectResourcePool(resourcePool);
+
+            ResourceCountChangeMenuController addMenuController = new(addMenu);
+            addMenuController.OnResourceCountChangeRequested += resourcePool.AddResource;
+
+            ResourceCountChangeMenuController removeMenuController = new(removeMenu);
+            removeMenuController.OnResourceCountChangeRequested += (Resource resource, int count) => resourcePool.TryRemoveResource(resource, count);
         }
 
         [Serializable]

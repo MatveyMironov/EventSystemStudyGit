@@ -1428,6 +1428,7 @@ GameObject:
   - component: {fileID: 615472247}
   - component: {fileID: 615472249}
   - component: {fileID: 615472248}
+  - component: {fileID: 615472250}
   m_Layer: 5
   m_Name: Add Menu Panel
   m_TagString: Untagged
@@ -1495,6 +1496,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615472246}
   m_CullTransparentMesh: 1
+--- !u!114 &615472250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615472246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4204da90481ed42bf9822b3c481c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 2118365496}
+  dropdown: {fileID: 702594335}
+  button: {fileID: 1291928295}
 --- !u!1 &626572553
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,13 +1783,7 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: Option A
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2731,6 +2741,8 @@ MonoBehaviour:
   - Panel: {fileID: 1298745503}
     Button: {fileID: 1593872645}
   mainMenu: {fileID: 1810421635}
+  addMenu: {fileID: 615472250}
+  removeMenu: {fileID: 1298745506}
 --- !u!1 &957532827
 GameObject:
   m_ObjectHideFlags: 0
@@ -3082,13 +3094,7 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: Option A
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3501,6 +3507,7 @@ GameObject:
   - component: {fileID: 1298745503}
   - component: {fileID: 1298745505}
   - component: {fileID: 1298745504}
+  - component: {fileID: 1298745506}
   m_Layer: 5
   m_Name: Remove Menu Panel
   m_TagString: Untagged
@@ -3568,6 +3575,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298745502}
   m_CullTransparentMesh: 1
+--- !u!114 &1298745506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298745502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4204da90481ed42bf9822b3c481c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 1324810569}
+  dropdown: {fileID: 1089086923}
+  button: {fileID: 881295932}
 --- !u!1 &1324810567
 GameObject:
   m_ObjectHideFlags: 0

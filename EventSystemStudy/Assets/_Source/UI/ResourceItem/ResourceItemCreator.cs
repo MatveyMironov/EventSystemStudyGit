@@ -8,6 +8,7 @@ namespace UISystem
     {
         [SerializeField] private ResourceItem resourceItemPrefab;
         [SerializeField] private RectTransform resourceItemsRoot;
+
         public ResourceItemController CreateResourceItem()
         {
             ResourceItem resourceItemInstance = GameObject.Instantiate(resourceItemPrefab, resourceItemsRoot);
